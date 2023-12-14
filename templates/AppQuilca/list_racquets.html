@@ -1,0 +1,59 @@
+{% extends 'base1.html' %}
+
+    {% block cambio1 %}
+        <div>
+            <form action="/app/buscar_racquet/" method="GET">
+                <input type="text" name="raqueta">
+                <input type="submit" value="Buscar">
+            </form>
+        </div>
+
+        {% if user.is_authenticated %}
+            <p><br>
+                <a class="btn btn-primary btn-sm d-inline-block" href="{% url 'RacquetCreate' %}">Add Racquet</a>
+            </p>
+        {% endif %}
+<br>
+        {% for raqueta in object_list %}
+            <p class="font-weight-bold">Post de: <b>{{ raqueta.user }}</b></p>
+            <h2>{{raqueta.raqueta}}</h2>
+            <img style="height: 240px" src="{{ raqueta.imagen.url }}" alt="">
+            <p class="lead mb-0">
+                <b>Precio:</b> {{raqueta.precio}} dólares.
+            </p>
+
+
+                <a class="btn btn-primary btn-sm d-inline-block" href="{% url 'RacquetDetail' raqueta.id %}">Detalles</a></div>
+
+
+            {% if user.is_authenticated and raqueta.user == user %}
+
+                <a class="btn btn-secondary btn-sm d-inline-block" href="{% url 'RacquetUpdate' raqueta.id %}">Editar</a></div>
+
+                <a class="btn btn-danger btn-sm d-inline-block" href="{% url 'RacquetDelete' raqueta.id %}">Delete</a></div>
+
+            {% endif %}
+            {% if user.is_authenticated %}
+                <a class="btn btn-dark btn-sm d-inline-block" href="{% url 'comentario' raqueta_id=raqueta.id %}">Añadir Comentario</a>
+            {% endif %}
+<hr>
+            {% for comentario in raqueta.comments.all %}
+
+            <p class="font-weight-bold">Autor: {{ comentario.usuario }}</p>
+            <p>Mensaje: {{ comentario.comentario }}</p>
+            <hr>
+<br>
+    {% endfor %}
+
+{% endfor %}
+
+
+
+    {% for comentario in raqueta.comments.all %}
+        <li class="mb-4">
+            <p class="font-weight-bold">Autor: {{ comentario.usuario }}</p>
+            <p>Mensaje: {{ comentario.comentario }}</p>
+        </li>
+    {% endfor %}
+
+{% endblock %}

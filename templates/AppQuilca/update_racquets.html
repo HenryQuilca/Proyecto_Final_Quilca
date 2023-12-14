@@ -1,0 +1,15 @@
+{% extends 'base1.html' %}
+    {% block cambio1 %}
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <input type="submit" value="Update">
+
+        </form>
+<br>
+        <p>
+            <a class="btn btn-primary btn-sm d-inline-block" href="{% url 'RacquetList' %}">Cancelar</a>
+        </p>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base1.html' %}
+
+    {% block cambio1 %}
+
+        <div>
+            <form action="/app/buscar_racquet/" method="GET">
+
+                {{ form.as_p }}
+
+                <input type="submit" value="Buscar">
+            </form>
+
+        </div>
+
+        {% for racquet in raquetas %}
+            <h2>{{racquet.raqueta}}</h2>
+            <p class="lead mb-0"></p>
+                Precio: {{racquet.precio}} dólares.
+            </p>
+            <hr>
+        {% endfor %}
+
+{% endblock %}

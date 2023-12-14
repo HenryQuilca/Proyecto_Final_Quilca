@@ -1,0 +1,12 @@
+{% extends 'base1.html' %}
+
+    {% block cambio1 %}
+
+      <form method="POST">
+        {% csrf_token %}
+          {{form.as_p}}
+          <input type="submit" value="Enviar">
+      </form>
+
+
+{% endblock %}

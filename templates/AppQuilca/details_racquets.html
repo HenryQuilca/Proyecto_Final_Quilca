@@ -1,0 +1,16 @@
+{% extends 'base1.html' %}
+
+    {% block cambio1 %}
+
+        <p><b>Modelo de raqueta: </b>{{racquet.raqueta}}</p>
+        <p><b>Precio: </b>{{racquet.precio}} dólares.</p>
+        <p><b>Condición: </b>{{racquet.estado}}</p>
+        <p><b>Fecha de post: </b>{{racquet.fecha_creacion}}</p>
+        <p><b>Stock: </b>{{racquet.stock}} unidades.</p>
+        <p><b>Descripción: </b>{{racquet.descripcion}}</p>
+
+        <p>
+            <a class="btn btn-primary btn-sm d-inline-block" href="{% url 'RacquetList' %}">Regresar</a>
+        </p>
+
+{% endblock %}

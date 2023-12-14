@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-5">
+        <a class="navbar-brand" href="/app/home/"><b>Olympus Tennis</b></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/app/home/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/app/listar_raquetas/">Raquetas</a></li>
+                {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="/app/crear_raqueta/">AddRacquet</a></li>
+                <li class="nav-item"><a class="nav-link" href="/app/edit_profile/">Edit Profile</a></li>
+                {% if not user.avatar %}
+                <li class="nav-item"><a class="nav-link" href="/app/avatar/">Add Avatar</a></li>
+                {% endif %}
+                <img style="height: 60px" src="{{ user.avatar.imagen.url }}" alt="">
+                <li class="nav-item"><a class="nav-link" href="/app/log_out/">Log Out</a></li>
+                <li class="nav-item">
+                        <div class="d-flex align-items-center">
+                            <span class="navbar-text">User: {{ user.username }}</span>
+                        </div>
+                </li>
+                {% else %}
+                <li class="nav-item"><a class="nav-link" href="/app/about_me">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="/app/log_in/">Log In</a></li>
+                <li class="nav-item"><a class="nav-link" href="/app/sing_up/">Sing Up</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

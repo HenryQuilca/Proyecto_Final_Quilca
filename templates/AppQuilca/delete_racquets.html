@@ -1,0 +1,13 @@
+{% extends 'base1.html' %}
+
+    {% block cambio1 %}
+
+        <form method="POST" >
+            {% csrf_token %}
+            Estás por eliminar la requeta <b>"{{object.raqueta}}"</b>, ¿Estás seguro?
+            <input type="submit" value="Delete">
+        </form>
+        <p>
+            <a class="btn btn-primary btn-sm d-inline-block" href="{% url 'RacquetList' %}">Cancelar</a>
+        </p>
+    {% endblock %}
